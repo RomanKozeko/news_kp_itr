@@ -1,0 +1,5 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.summary %></p>
+<p><%= @post.body %></p>
+<p><%= link_to "edit", edit_post_path %></p>
+<p><%= link_to "delete", post_path(@post), method: :delete %></p>
