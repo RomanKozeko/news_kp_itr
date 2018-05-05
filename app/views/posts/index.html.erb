@@ -1,7 +1,3 @@
-<p>All posts</p>
+<h1>All posts</h1>
 
-<% @posts.each do |post| %>
-  <div>
-  <%= link_to post.title, post_path(post) %>
-  </div>
-<% end %>
+<%= render @posts %>
