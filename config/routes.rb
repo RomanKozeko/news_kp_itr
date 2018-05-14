@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  #get "users#index"
-  resources :users, only: [:index, :show]
+  resources :authors, only: [:index, :show]
+  #resources :users
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :posts
   root to: "posts#index"

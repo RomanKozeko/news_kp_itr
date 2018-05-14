@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "Авторы", users_path, class: "nav-link" %>
+            <%= link_to "Авторы", authors_path, class: "nav-link" %>
           </li>
         </ul>
         <ul class="navbar-nav pull-xs-right">
@@ -40,7 +40,7 @@
                 Кабинет
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to "Профиль", user_path(current_user.id), class: "dropdown-item" %>
+                <%= link_to "Профиль", author_path(current_user.id), class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
@@ -57,6 +57,15 @@
     </nav>
   </div>
 <div class="container main">
+  <div class="row">
+    <div class="col-md-12">
+      <% flash.each do |name, massage| %>
+      <div class="alert alert-<%= name %>">
+        <%= massage %>
+      </div>
+      <% end %>
+    </div>
+  </div>
   <%= yield %>
 </div>
 

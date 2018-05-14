@@ -13,9 +13,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    if @post = Post.create(post_params)
-      redirect_to @post
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to @post, success: "Новость успешно создалась"
     else
+      flash.now[:danger] = "Новость не создана"
       render :new
     end
   end
@@ -27,15 +29,18 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to @post , success: "Новость успешно обновлена"
     else
+      flash.now[:danger] = "Новость не обновлена"
       render :edit
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    redirect_to posts_path if @post.destroy
+    if @post.destroy
+      redirect_to posts_path, danger: "Новость удалена"
+    end
   end
 
   private

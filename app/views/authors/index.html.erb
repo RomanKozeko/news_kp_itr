@@ -1,0 +1,3 @@
+<% @users.each do |user| %>
+<p><%= link_to user.email, author_path(user)  %></p>
+<% end %>
