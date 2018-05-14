@@ -1,0 +1,30 @@
+ru:
+  layouts:
+    application:
+      title: "Новости"
+      authors: "Авторы"
+      add_news: "Добавить новость"
+      profile: "Профиль"
+      sign_out: "Выход"
+      sign_in: "Вход"
+      sign_up: "Регистрация"
+      cabinet: "Кабинет"
+  common:
+    errors: "Ошибка"
+  posts:
+    index:
+      title: "Новости"
+    post:
+      edit: "Редактировать"
+      delete: "Удалить"
+    form:
+      submit: "%{action} статью"
+      create: "Создать"
+      edit: "Изменить"
+    new:
+      title: "Новая статья"
+    edit:
+      title: "Редактирование статьи"
+    show:
+      edit: "Изменить"
+      delete: "Удалить"

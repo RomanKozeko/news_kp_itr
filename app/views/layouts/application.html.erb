@@ -12,7 +12,7 @@
   <body>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to "Новости", root_path, class: "navbar-brand" %>
+      <%= link_to t(".title"), root_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,29 +20,29 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "Авторы", authors_path, class: "nav-link" %>
+            <%= link_to t(".authors"), authors_path, class: "nav-link" %>
           </li>
         </ul>
         <ul class="navbar-nav pull-xs-right">
           <% unless user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "sign in", user_session_path, class: "nav-link" %>
+            <%= link_to t(".sign_in"), user_session_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "sign up", new_user_registration_path, class: "nav-link" %>
+            <%= link_to t(".sign_up"), new_user_registration_path, class: "nav-link" %>
           </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to "Добавить новость", new_post_path, class: "btn btn-primary" %>
+              <%= link_to t(".add_news"), new_post_path, class: "btn btn-outline-primary" %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Кабинет
+                <%= t(".cabinet") %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to "Профиль", author_path(current_user.id), class: "dropdown-item" %>
+                <%= link_to t(".profile"), author_path(current_user.id), class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
-                <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             <li class="nav-item">
 
@@ -60,7 +60,7 @@
   <div class="row">
     <div class="col-md-12">
       <% flash.each do |name, massage| %>
-      <div class="alert alert-<%= name %>">
+      <div class="alert  alert-<%= name %>">
         <%= massage %>
       </div>
       <% end %>
