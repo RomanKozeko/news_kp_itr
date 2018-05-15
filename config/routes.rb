@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-
-  resources :authors, only: [:index, :show]
+  patch "update_profile/:id", to: "users#update_profile", as: "update_profile"
+  get "show_profile/:id", to: "users#show_profile", as: "show_profile"
+  get "show_all", to: "users#show_all"
+  resources :authors, only: [:index, :show, :edit, :update]
   #resources :users
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :posts

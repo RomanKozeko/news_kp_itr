@@ -1,5 +1,5 @@
-<%= form_tag({controller: "authors", action: "update"}, method: "put") do %>
-<div class="row my-2">
+
+  <div class="row my-2">
     <div class="col-lg-8 order-lg-2">
       <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -111,85 +111,21 @@
           </table>
         </div>
         <div class="tab-pane" id="edit">
-          <form role="form">
+            <%= form_tag({controller: "users", action: "update_profile"}, {method: "patch",  multipart: true}) do %>
             <div class="form-group row">
+              <%= label_tag :name ,t(".name"),  class: "col-lg-3 col-form-label form-control-label" %>
+              <div class="col-lg-9">
+                <%= text_field_tag :name, @user.name, class: "form-control" %>
+              </div>
+            </div>
 
-              <div class="col-lg-9">
-                <%= text_field_tag :name, @author.name, class: "form-control" %>
-              </div>
-            </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+              <%= label_tag :avatar, t(".avatar"), class: "col-lg-3 col-form-label form-control-label" %>
               <div class="col-lg-9">
-                <input class="form-control" type="text" value="Bishop">
+                <%= file_field_tag :avatar %>
               </div>
             </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Email</label>
-              <div class="col-lg-9">
-                <input class="form-control" type="email" value="email@gmail.com">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Company</label>
-              <div class="col-lg-9">
-                <input class="form-control" type="text" value="">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Website</label>
-              <div class="col-lg-9">
-                <input class="form-control" type="url" value="">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Address</label>
-              <div class="col-lg-9">
-                <input class="form-control" type="text" value="" placeholder="Street">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label"></label>
-              <div class="col-lg-6">
-                <input class="form-control" type="text" value="" placeholder="City">
-              </div>
-              <div class="col-lg-3">
-                <input class="form-control" type="text" value="" placeholder="State">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Time Zone</label>
-              <div class="col-lg-9">
-                <select id="user_time_zone" class="form-control" size="0">
-                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                  <option value="Alaska">(GMT-09:00) Alaska</option>
-                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                  <option value="Arizona">(GMT-07:00) Arizona</option>
-                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Username</label>
-              <div class="col-lg-9">
-                <input class="form-control" type="text" value="janeuser">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Password</label>
-              <div class="col-lg-9">
-                <input class="form-control" type="password" value="11111122333">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
-              <div class="col-lg-9">
-                <input class="form-control" type="password" value="11111122333">
-              </div>
-            </div>
+
             <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label"></label>
               <div class="col-lg-9">
@@ -197,17 +133,11 @@
                 <input type="reset" class="btn btn-secondary" value="Cancel">
               </div>
             </div>
-          </form>
+<% end %>
         </div>
       </div>
     </div>
     <div class="col-lg-4 order-lg-1 text-center">
-      <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-      <h6 class="mt-2">Upload a different photo</h6>
-      <label class="custom-file">
-        <%= file_field_tag :avatar %>
-
-      </label>
+      <%= image_tag @user.avatar.url(:thumb),class: "mx-auto img-fluid img-circle d-block" if @user.avatar? %>
     </div>
   </div>
-<%- end %>
