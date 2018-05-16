@@ -11,4 +11,9 @@
   <section class="post-summary">
     <p><%= post.summary %></p>
   </section>
+
+  <section class="footer-summary">
+    <%= raw post.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: "badge badge-primary"}.join(" ") %>
+  </section>
+
 </div>
