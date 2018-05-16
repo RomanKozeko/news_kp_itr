@@ -40,7 +40,7 @@
                 <%= t(".cabinet") %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to t(".profile"), author_path(current_user.id), class: "dropdown-item" %>
+                <%= link_to t(".profile"), show_profile_path(current_user.id), class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
