@@ -1,11 +1,5 @@
 module PostsHelper
-  def submit_name(post)
-    if post.new_record?
-      ".create"
-    else
-      ".edit"
-    end
-  end
+
 
   def tag_cloud(tags, classes)
     max = tags.sort_by(&:count).last

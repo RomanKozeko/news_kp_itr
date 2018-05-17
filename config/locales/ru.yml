@@ -11,6 +11,11 @@ ru:
       cabinet: "Кабинет"
   common:
     errors: "Ошибка"
+  categories:
+    form:
+      submit: "%{action} категорию"
+      create: "Создать"
+      edit: "Изменить"
   posts:
     index:
       title: "Новости"

@@ -16,3 +16,10 @@
 .title {
   text-align: center;
 }
+
+.pagination {
+  li{
+    list-style-type: none;
+    display: inline-block;
+  }
+}

@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.includes(:tags).all
+    @posts = Post.includes(:tags, :category).paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:tags, :category).find(params[:id])
   end
 
   def new
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :summary, :body, :all_tags)
+    params.require(:post).permit(:title, :summary, :body, :all_tags, :category_id)
   end
 
 
