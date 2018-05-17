@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
   has_many :taggings
-  has_many :tags, through: :taggings
+  has_many :tags, through: :taggings, dependent: :destroy
   belongs_to :category
+  belongs_to :user
   validates :title, :summary, :body, presence: true
 
   def all_tags

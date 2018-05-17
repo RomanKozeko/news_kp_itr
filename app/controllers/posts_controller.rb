@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.includes(:tags, :category).paginate(page: params[:page], per_page: 10)
+    @posts = Post.includes(:tags, :category, :user).paginate(page: params[:page], per_page: 5)
   end
 
   def show
-    @post = Post.includes(:tags, :category).find(params[:id])
+    @post = Post.includes(:tags, :category, :user).find(params[:id])
   end
 
   def new
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to @post, success: "Новость успешно создалась"
     else
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :summary, :body, :all_tags, :category_id)
+    params.require(:post).permit(:title, :summary, :body, :all_tags, :category_id, :user_id)
   end
 
 
