@@ -1,16 +1,18 @@
 class CategoriesController < ApplicationController
   def index
     @categories = Category.all
+    authorize! :index, Category
   end
 
   def show
     @category = Category.find(params[:id])
-    @posts = Post.includes(:tags, :category).where(category_id: [@category.subtree_ids]).paginate(page: params[:page], per_page: 10)
-
+    @posts = Post.includes(:tags, :category, :user).where(category_id: [@category.subtree_ids]).paginate(page: params[:page], per_page: 10)
+    authorize! :show, @category
   end
 
   def new
     @category = Category.new
+    authorize! :create, @category
   end
 
   def create
@@ -20,10 +22,12 @@ class CategoriesController < ApplicationController
     else
       render :new
     end
+    authorize! :create, @category
   end
 
   def edit
     @category = Category.find(params[:id])
+    authorize! :update, @category
   end
 
   def update
@@ -33,12 +37,14 @@ class CategoriesController < ApplicationController
     else
       render :edit
     end
+    authorize! :update, @category
   end
 
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
     redirect_to categories_path
+    authorize! :destroy, @category
 
   end
 end

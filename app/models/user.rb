@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_create :default_role
+
   has_many :posts
   mount_uploader :avatar, AvatarUploader
 
@@ -13,5 +15,11 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end
+  end
+
+  private
+
+  def default_role
+    self.role = 'user'
   end
 end

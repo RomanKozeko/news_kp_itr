@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:tags, :category, :user).paginate(page: params[:page], per_page: 5)
+    authorize! :index, Post
   end
 
   def show
@@ -10,6 +11,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    authorize! :create, @post
   end
 
   def create
@@ -19,10 +21,12 @@ class PostsController < ApplicationController
     else
       render :new
     end
+    authorize! :create, @post
   end
 
   def edit
     @post = Post.find(params[:id])
+    authorize! :update, @post
   end
 
   def update
@@ -32,6 +36,7 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+    authorize! :update, @post
   end
 
   def destroy
@@ -39,6 +44,7 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to posts_path, danger: "Новость удалена"
     end
+    authorize! :destroy, @post
   end
 
   private

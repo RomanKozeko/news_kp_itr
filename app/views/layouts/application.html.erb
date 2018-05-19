@@ -32,15 +32,20 @@
             <%= link_to t(".sign_up"), new_user_registration_path, class: "nav-link" %>
           </li>
             <% else %>
+            <% if can? :create , Post %>
             <li class="nav-item">
               <%= link_to t(".add_news"), new_post_path, class: "btn btn-outline-primary" %>
             </li>
+              <% end %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= t(".cabinet") %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to t(".profile"), show_profile_path(current_user.id), class: "dropdown-item" %>
+                <% if can? :index, Category %>
+                <%= link_to t(".catrgories"), categories_path, class: "dropdown-item" %>
+                  <%end %>
                 <div class="dropdown-divider"></div>
                 <%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>

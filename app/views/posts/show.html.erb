@@ -2,10 +2,13 @@
   <section class="post-head">
     <h2><%=  @post.title %></h2>
     <small>
-      <time><%= @post.created_at.to_date.strftime("%d %B, %Y") %></time>
-      |<%= link_to @post.category.name, @post.category if @post.category.present? %> |
+      <time><%= @post.created_at.to_date.strftime("%d %B, %Y") %></time> |
+      <%= @post.user.name if @post.user_id%> |
+      <%= link_to @post.category.name, @post.category if @post.category.present? %> |
+      <% if can? :update, @post %>
       <%= link_to t(".edit"), edit_post_path(@post) %> |
       <%= link_to t(".delete"), post_path(@post), method: :delete %>
+        <% end %>
     </small>
 
   </section>
