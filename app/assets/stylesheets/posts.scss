@@ -12,3 +12,14 @@
     margin-bottom: 1em;
   }
 }
+
+.title {
+  text-align: center;
+}
+
+.pagination {
+  li{
+    list-style-type: none;
+    display: inline-block;
+  }
+}

@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  before_create :default_role
+
+  has_many :posts
+  mount_uploader :avatar, AvatarUploader
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :confirmable, :validatable, :omniauthable,
          :omniauth_providers => [:vkontakte]
@@ -12,5 +15,11 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end
+  end
+
+  private
+
+  def default_role
+    self.role = 'user'
   end
 end
