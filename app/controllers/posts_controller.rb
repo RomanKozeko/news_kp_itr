@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.includes(:tags, :category, :user).paginate(page: params[:page], per_page: 5)
+    @posts = Post.includes(:tags, :category, :user).order(:created_at).reverse_order.paginate(page: params[:page], per_page: 5)
     authorize! :index, Post
   end
 
   def show
     @post = Post.includes(:tags, :category, :user).find(params[:id])
+    @new_comment = Comment.build_from(@post, current_user.id, "")
   end
 
   def new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_17_113653) do
+ActiveRecord::Schema.define(version: 2018_05_24_105918) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,21 @@ ActiveRecord::Schema.define(version: 2018_05_17_113653) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.text "body"
+    t.string "subject"
+    t.integer "user_id", null: false
+    t.integer "parent_id"
+    t.integer "lft"
+    t.integer "rgt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -34,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_05_17_113653) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.integer "user_id"
+    t.string "preview"
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

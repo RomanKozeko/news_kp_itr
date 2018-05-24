@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_create :default_role
 
   has_many :posts
+  has_many :comments
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,

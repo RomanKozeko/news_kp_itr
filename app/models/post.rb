@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :taggings, dependent: :destroy
   belongs_to :category
   belongs_to :user
+  acts_as_commentable
   validates :title, :summary, :body, presence: true
 
   def all_tags

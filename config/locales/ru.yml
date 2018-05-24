@@ -18,7 +18,7 @@ ru:
       edit: "Изменить"
   posts:
     index:
-      title: "Новости"
+      title: "Последние новости"
     post:
       edit: "Редактировать"
       delete: "Удалить"
