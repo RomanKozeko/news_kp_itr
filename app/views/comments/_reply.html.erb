@@ -1,9 +1,10 @@
 <% comments.each do |comment| %>
   <div class="comments-show">
     <div class="comment">
-      <div><%= comment.user.name %></div>
+      <time><%= comment.created_at.strftime("%d.%m.%Y %H:%M") %></time> |
+      <%= link_to comment.user.name, show_profile_path(comment.user_id) if comment.user_id %>
       <p><%= comment.body %></p>
-      <div class="comment-nav"><p class="comment-reply">reply</p></div>
+      <div class="comment-nav"><p class="comment-reply"><%= t(".reply") %></p></div>
       <div class="reply-form">
         <%= form_for @new_comment do |f| %>
           <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
@@ -13,7 +14,7 @@
             <%= f.text_area :body, class: 'form-control' %>
           </div>
           <div class="field form-group">
-            <%= submit_tag "Post Reply", class: 'btn btn-primary' %>
+            <%= submit_tag t(".reply") , class: 'btn btn-primary' %>
           </div>
         <% end %>
       </div>

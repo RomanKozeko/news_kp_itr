@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
   acts_as_commentable
+  mount_uploader :preview, ImageUploader
   validates :title, :summary, :body, presence: true
 
   def all_tags

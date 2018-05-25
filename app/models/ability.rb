@@ -11,9 +11,9 @@ class Ability
         can :index, Post
         can :show, Post
         can :show, Category
-        can :show_all, User
-        can :show_profile, User
-        can :update_profile, User do |u|
+        can :index, User
+        can :edit, User
+        can :update, User do |u|
           u == user
         end
         can :index, Post
@@ -29,9 +29,9 @@ class Ability
         can :index, Post
         can :show, Post
         can :show, Category
-        can :show_all, User
-        can :show_profile, User
-        can :update_profile, User do |u|
+        can :index, User
+        can :edit, User
+        can :update, User do |u|
           u == user
         end
       end
@@ -39,8 +39,8 @@ class Ability
         can :index, Post
         can :show, Post
         can :show, Category
-        can :show_all, User
-        can :show_profile, User
+        can :index, User
+        can :edit, User
       end
 
 

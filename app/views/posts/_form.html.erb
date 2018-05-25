@@ -9,7 +9,7 @@
   </div>
 <% end %>
 
-<%= form_for @post do |f| %>
+<%= form_for @post, :html => { :multipart => true } do |f| %>
   <div class = "form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
@@ -18,6 +18,11 @@
   <div class = "form-group">
     <%= f.label :summary %>
     <%= f.text_field :summary, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :preview %>
+    <%= f.file_field :preview %>
   </div>
 
   <div class = "form-group">

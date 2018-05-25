@@ -1,4 +1,15 @@
 ru:
+  profile:
+    users:
+      edit:
+        submit: "Сохранить"
+  comments:
+    reply:
+      reply: "Ответить"
+    form:
+      post_comment: "Оставить комментарий"
+    template:
+      comments: "Комментарии"
   layouts:
     application:
       title: "Новости"

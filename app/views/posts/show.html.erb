@@ -2,7 +2,7 @@
   <section class="post-head">
     <h2><%=  @post.title %></h2>
     <small>
-      <time><%= @post.created_at.strftime("%d %B, %Y %H:%M") %></time> |
+      <time><%= @post.created_at.strftime("%d.%m.%Y %H:%M") %></time> |
       <%= link_to @post.user.name, show_profile_path(@post.user_id) if @post.user_id%> |
       <%= link_to @post.category.name, @post.category if @post.category.present? %> |
       <% if can? :update, @post %>

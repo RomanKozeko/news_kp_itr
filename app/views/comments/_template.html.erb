@@ -1,6 +1,6 @@
 <div class="comments-header">
   <h4>
-    <%= commentable.comment_threads.count == 0 ? "no" : commentable.comment_threads.count %> comments
+    <%=  t(".comments") + "(#{commentable.comment_threads.count.to_s})"  %>
   </h4>
 </div>
 
