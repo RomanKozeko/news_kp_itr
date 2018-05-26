@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  before_create :default_role
+  before_create :default_role, :dedault_name
+
+  validates :name, uniqueness: true, presence: true
 
   has_many :posts
   has_many :comments
@@ -14,7 +16,9 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.name = auth.info.email
       user.password = Devise.friendly_token[0,20]
+      user.skip_confirmation!
     end
   end
 
@@ -22,5 +26,9 @@ class User < ApplicationRecord
 
   def default_role
     self.role = 'user'
+  end
+
+  def dedault_name
+    self.name = self.email
   end
 end

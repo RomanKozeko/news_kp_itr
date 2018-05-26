@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :comments
   namespace :profile do
     resources :users, only: [:index, :edit, :update]
+    patch "update_role/:id", to: "users#update_role", as: "update_role"
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

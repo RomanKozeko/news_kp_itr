@@ -1,3 +1,18 @@
-<% @users.each do |user| %>
-  <p><%= link_to user.email, edit_profile_user_path(user.id)  %></p>
-<% end %>
+
+<table class="table table-sm table-hover table-striped">
+  <tbody>
+
+  <% @users.each do |user| %>
+      <td>
+        <%= link_to user.name, edit_profile_user_path(user)%>
+      </td>
+      <td>
+        <%= user.role %>
+
+      </td>
+    </tr>
+    <% end %>
+
+
+  </tbody>
+</table>
