@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  before_create :default_role, :dedault_name
+  before_validation :default_role, :dedault_name
 
   validates :name, uniqueness: true, presence: true
 

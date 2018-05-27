@@ -7,13 +7,12 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         make_child_comment
-        #format.html  { redirect_to(:back, :notice => 'Comment was successfully added.') }
         format.html  { redirect_to(post_path(@comment.commentable_id), success:  'Comment was successfully added.') }
-        #redirect_to post_path(@comment.user_id), success:  'Comment was successfully added.'
       else
         format.html  { redirect_to(post_path(@comment.commentable_id), danger:  'Comment not successfully added.') }
       end
     end
+    authorize! :create, @comment
   end
 
   private

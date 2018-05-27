@@ -7,16 +7,22 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.includes(:tags, :category, :user).find(params[:id])
-    @new_comment = Comment.build_from(@post, current_user.id, "")
+    @new_comment = Comment.build_from(@post, current_user.id, "") if user_signed_in?
   end
 
   def new
-    @post = Post.new
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @post = @user.posts.build
+    else
+      @post = current_user.posts.build
+    end
     authorize! :create, @post
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @user = User.find(post_params[:user_id])
+    @post = @user.posts.build(post_params)
     if @post.save
       redirect_to @post, success: "Новость успешно создалась"
     else
@@ -26,7 +32,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    unless @post = Post.find(params[:id])
+      @post = Post.new
+    end
     authorize! :update, @post
   end
 

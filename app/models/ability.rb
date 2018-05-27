@@ -8,6 +8,7 @@ class Ability
         can :manage, :all
       end
       if user.role == "author"
+        can :create, Comment
         can :index, Post
         can :show, Post
         can :show, Category
@@ -17,7 +18,9 @@ class Ability
           u == user
         end
         can :index, Post
-        can :create, Post
+        can :create, Post do |post|
+          post.user == user
+        end
         can :update, Post do |post|
           post.user == user
         end
@@ -26,6 +29,7 @@ class Ability
         end
       end
       if user.role == "user"
+        can :create, Comment
         can :index, Post
         can :show, Post
         can :show, Category

@@ -1,4 +1,4 @@
-<h2>Resend confirmation instructions</h2>
+<h2> <%= t(".resend_confiermation_title")%></h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
@@ -9,7 +9,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit "Resend confirmation instructions", class: "btn btn-primary" %>
+    <%= f.submit t(".submit"), class: "btn btn-primary" %>
   </div>
 <% end %>
 

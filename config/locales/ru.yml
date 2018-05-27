@@ -3,6 +3,13 @@ ru:
     users:
       edit:
         submit: "Сохранить"
+        avatar: "Аватар"
+        profile: "Профиль"
+        edit: "Изменить"
+        delete: "Удалить"
+        create_us: "Создать от имени: "
+        last_posts: "Последние посты"
+        edit_password: "Изменить пароль"
   comments:
     reply:
       reply: "Ответить"
@@ -12,6 +19,8 @@ ru:
       comments: "Комментарии"
   layouts:
     application:
+      categories: "Управление категориями"
+      tags_cloud: "Облако тегов"
       title: "Новости"
       authors: "Авторы"
       add_news: "Добавить новость"
@@ -44,3 +53,60 @@ ru:
     show:
       edit: "Изменить"
       delete: "Удалить"
+  categories:
+    form:
+      submit: "%{action} категорию"
+      create: "Создать"
+      edit: "Изменить"
+    index:
+      title: "Управление категориями"
+      name: "Категория"
+      name_parent: "Категория родитель"
+      new: "Новая категория"
+      edit: "Изменить"
+      delete: "Удалить"
+    edit:
+      title: "Редактирование категории"
+    new:
+      title: "Новая категория"
+  will_paginate:
+    previous_label: "Предыдущая"
+    next_label: "Следующая"
+  devise:
+    confirmations:
+      new:
+        resend_confiermation_title: "Переотправить письмо с подтверждением"
+        submit: "Отправить"
+      mailer:
+        confirmation_instructions:
+          welcome: "Приветствую"
+          confirm: "Проийдите по ссылке для подтверждения аккаутна"
+          confirm_link: "Подтвердить"
+        password_cahange:
+          hello: "Привет"
+          notify: "Пароль вашей учетной записи был изменент"
+    registrations:
+      edit:
+        title: "Изменить регистрационные данные пользователя"
+        waiting: "Email ожидает подтверждения"
+        change: "оставть пустым, если не хотите изменять"
+        minimum: "знаков минимум"
+        submit: "Изменить"
+        delete: "Удалить аккаунт?"
+        delete_btn: "Удалить"
+      new:
+        sign_up: "Регистрация"
+        minimum: "знаков минимум"
+    sessions:
+      new:
+        log_in: "Вход"
+    shared:
+      links:
+        log_in: "Вход"
+        sign_up: "Регистрация"
+        forgot_password: "Забыли пароль?"
+        confirmation_instructions: "Не пришло письмо с подтверждением?"
+        sign_in: "Войти с помощью"
+
+
+

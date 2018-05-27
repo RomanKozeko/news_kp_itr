@@ -1,6 +1,7 @@
 <%= render "errors", object: @post %>
 
 <%= form_for @post, :html => { :multipart => true } do |f| %>
+  <%= f.hidden_field :user_id, value: @post.user_id %>
   <div class = "form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>

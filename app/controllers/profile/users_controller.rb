@@ -1,13 +1,13 @@
 class Profile::UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.all.paginate(page: params[:page], per_page: 30)
     authorize! :index, User
   end
 
   def edit
     @user = User.find(params[:id])
-    @posts = @user.posts.order(:updated_at).reverse_order
+    @posts = @user.posts.order(:updated_at).reverse_order.paginate(page: params[:page], per_page: 15)
     authorize! :edit, @user
   end
 
@@ -25,7 +25,7 @@ class Profile::UsersController < ApplicationController
   def update_role
     @user = User.find(params[:id])
     @posts = @user.posts.order(:updated_at).reverse_order
-    authorize! :update, @user
+    authorize! :update_role, @user
     if @user.update(user_role_params)
       redirect_to edit_profile_user_path(@user) , success: "Профиль успешно обновлен"
     else

@@ -1,7 +1,8 @@
-
+<div class="title">
+  <h1> <%= t(".title") %></h1>
+</div>
 <table class="table table-sm table-hover table-striped">
   <tbody>
-
   <% @users.each do |user| %>
       <td>
         <%= link_to user.name, edit_profile_user_path(user)%>
@@ -12,7 +13,6 @@
       </td>
     </tr>
     <% end %>
-
-
   </tbody>
 </table>
+<%=  will_paginate @users, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>

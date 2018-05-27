@@ -1,6 +1,6 @@
 <div class="post">
   <section class="post-head">
-    <h2><%=  @post.title %></h2>
+    <h3><%=  @post.title %></h3>
     <small>
       <time><%= @post.created_at.strftime("%d.%m.%Y %H:%M") %></time> |
       <%= link_to @post.user.name, show_profile_path(@post.user_id) if @post.user_id%> |
