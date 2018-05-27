@@ -1,0 +1,6 @@
+development:
+  cloud_name: "dxg13lmg0"
+  api_key: "415578413636674"
+  api_secret: "weEXGgn3J0kmoUsUpAufOIfHlig"
+  secure: true
+  cdn_subdomain: true
