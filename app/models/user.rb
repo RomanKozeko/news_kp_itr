@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  before_validation :default_role, :dedault_name
+  before_create :default_role, :default_name, :default_locale
 
-  validates :name, uniqueness: true, presence: true
+  validates :name, uniqueness: true, presence: true, allow_blank: true, length: {maximum: 255}
 
   has_many :posts
   has_many :comments
@@ -25,10 +25,14 @@ class User < ApplicationRecord
   private
 
   def default_role
-    self.role = 'user'
+    self.role = "user"
   end
 
-  def dedault_name
+  def default_name
     self.name = self.email
+  end
+
+  def default_locale
+    self.locale = "ru"
   end
 end

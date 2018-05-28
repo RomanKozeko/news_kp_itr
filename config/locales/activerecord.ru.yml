@@ -27,3 +27,5 @@ ru:
     errors:
       messages:
         blank: "не может быть пустым"
+        too_long: "слишком длиный"
+        required: "обязательно"

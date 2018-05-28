@@ -1,7 +1,10 @@
 ru:
   profile:
     users:
+      index:
+        title: "Все пользователи"
       edit:
+        not_found: "Нет такого пользователя"
         submit: "Сохранить"
         avatar: "Аватар"
         profile: "Профиль"
@@ -11,6 +14,9 @@ ru:
         last_posts: "Последние посты"
         edit_password: "Изменить пароль"
   comments:
+    create:
+      success_create: "Комментарий успешно создан"
+      not_create: "Комментарий не добавлен"
     reply:
       reply: "Ответить"
     form:
@@ -37,9 +43,16 @@ ru:
       create: "Создать"
       edit: "Изменить"
   posts:
+    update:
+      success_update: "Новость успешно обновлена"
+    create:
+      success_create: "Новость успешно создана"
+    destroy:
+      success_destroy: "Новость успешно удалена"
     index:
       title: "Последние новости"
     post:
+      confirm: "Действительно удалить?"
       edit: "Редактировать"
       delete: "Удалить"
     form:
@@ -51,9 +64,14 @@ ru:
     edit:
       title: "Редактирование статьи"
     show:
-      edit: "Изменить"
+      confirm: "Действительно удалить?"
+      edit: "Редактировать"
       delete: "Удалить"
   categories:
+    update:
+      success_update: "Категория успешно обновлена"
+    create:
+      success_create: "Категория успешно создана"
     form:
       submit: "%{action} категорию"
       create: "Создать"

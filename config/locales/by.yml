@@ -1,0 +1,127 @@
+by:
+  profile:
+    users:
+      index:
+        title: "Усе карыстальнікі"
+      edit:
+        not_found: "Няма такого карыстальника"
+        submit: "Захаваць"
+        avatar: "Аватар"
+        profile: "Профіль"
+        edit: "Змяніць"
+        delete: "Выдаліць"
+        create_us: "Стварыць ад імя:"
+        last_posts: "Апошнія пасты"
+        edit_password: "Змяніць пароль"
+  comments:
+    create:
+      success_create: "Каментар паспяхова створаны"
+      not_create: "Каментарый не дададзены"
+    reply:
+      reply: "Адказаць"
+    form:
+      post_comment: "Пакінуць каментар"
+    template:
+      comments: "Каментары"
+  layouts:
+    application:
+      categories: "Упраўленне катэгорыямі"
+      tags_cloud: "Воблака тэгаў"
+      title: "Навіны"
+      authors: "Аўтары"
+      add_news: "Дадаць навіна"
+      profile: "Профіль"
+      sign_out: "Выхад"
+      sign_in: "Уваход"
+      sign_up: "Рэгістрацыя"
+      cabinet: "Кабінет"
+  common:
+    errors: "Памылка"
+  categories:
+    form:
+      submit: "% {action} катэгорыю"
+      create: "Стварыць"
+      edit: "Змяніць"
+  posts:
+    update:
+      success_update: "Навіна паспяхова абноўлена"
+    create:
+      success_create: "Навіна паспяхова створана"
+    destroy:
+      success_destroy: "Навіна паспяхова выдаленая"
+    index:
+      title: "Апошнія навіны"
+    post:
+      confirm: "Сапраўды выдаліць?"
+      edit: "Рэдагаваць"
+      delete: "Выдаліць"
+    form:
+      submit: "% {action} артыкул"
+      create: "Стварыць"
+      edit: "Змяніць"
+    new:
+      title: "Новая артыкул"
+    edit:
+      title: "Рэдагаванне артыкула"
+    show:
+      confirm: "Сапраўды выдаліць?"
+      edit: "Рэдагаваць"
+      delete: "Выдаліць"
+  categories:
+    update:
+      success_update: "Катэгорыя паспяхова абноўлена"
+    create:
+      success_create: "Катэгорыя паспяхова створана"
+    form:
+      submit: "% {action} катэгорыю"
+      create: "Стварыць"
+      edit: "Змяніць"
+    index:
+      title: "Упраўленне катэгорыямі"
+      name: "Катэгорыя"
+      name_parent: "Катэгорыя бацька"
+      new: "Новая катэгорыя"
+      edit: "Змяніць"
+      delete: "Выдаліць"
+    edit:
+      title: "Рэдагаванне катэгорыі"
+    new:
+      title: "Новая катэгорыя"
+  will_paginate:
+    previous_label: "Папярэдняя"
+    next_label: "Наступная"
+  devise:
+    confirmations:
+      new:
+        resend_confiermation_title: "пераадправіў ліст з пацвярджэннем"
+        submit: "Даслаць"
+      mailer:
+        confirmation_instructions:
+          welcome: "Вітаю"
+          confirm: "Проийдите па спасылцы для пацверджання аккаутна"
+          confirm_link: "Пацвердзіць"
+        password_cahange:
+          hello: "Прывітанне"
+          notify: "Пароль вашай ўліковага запісу быў изменент"
+    registrations:
+      edit:
+        title: "Змяніць рэгістрацыйныя дадзеныя карыстальніка"
+        waiting: "Email чакае пацверджання"
+        change: "оставте пустым, калі не жадаеце змяняць"
+        minimum: "знакаў мінімум"
+        submit: "Змяніць"
+        delete: "Выдаліць рахунак?"
+        delete_btn: "Выдаліць"
+      new:
+        sign_up: "Рэгістрацыя"
+        minimum: "знакаў мінімум"
+    sessions:
+      new:
+        log_in: "Уваход"
+    shared:
+      links:
+        log_in: "Уваход"
+        sign_up: "Рэгістрацыя"
+        forgot_password: "Забылі пароль?"
+        confirmation_instructions: "Не прыйшло ліст з пацвярджэннем?"
+        sign_in: "Увайсці з дапамогай"

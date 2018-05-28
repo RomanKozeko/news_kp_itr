@@ -5,7 +5,9 @@ class Post < ApplicationRecord
   belongs_to :user
   acts_as_commentable
   mount_uploader :preview, ImageUploader
-  validates :title, :summary, :body, presence: true
+  validates :title, presence: true, length: {maximum: 255}
+  validates :summary, presence: true, length: {maximum: 255}
+  validates :body, presence: true
 
   def all_tags
     self.tags.map(&:name).join(", ")

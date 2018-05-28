@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  patch "update_profile/:id", to: "users#update_profile", as: "update_profile"
-  get "show_profile/:id", to: "users#show_profile", as: "show_profile"
-  get "show_all", to: "users#show_all"
-  #resources :authors, only: [:index, :show, :edit, :update]
-  #resources :users
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
-  resources :posts
+
+  devise_for :users, only: :omniauth_callbacks, :controllers => { :omniauth_callbacks => "callbacks" }
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   root to: "posts#index"
+  devise_for :users, skip: :omniauth_callbacks, :controllers => { :omniauth_callbacks => "callbacks" }
+  resources :posts
   resources :pictures, only: [:create, :destroy]
   resources :tags, only: [:show]
   resources :categories
@@ -15,5 +13,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :edit, :update]
     patch "update_role/:id", to: "users#update_role", as: "update_role"
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  end
+
 end

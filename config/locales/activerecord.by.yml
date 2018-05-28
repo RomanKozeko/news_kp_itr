@@ -1,0 +1,31 @@
+by:
+  activerecord:
+    models:
+      post: "Артыкул"
+      category: "Катэгорыя"
+      user: "Карыстальнік"
+    attributes:
+      category:
+        name: "Назва"
+        parent_id: "Катэгорыя бацька"
+      post:
+        preview: "Прэв'ю малюнак"
+        title: "Загаловак"
+        summary: "Кароткі змест"
+        body: "Тэкст артыкула"
+        all_tags: "Тэгі"
+        category_id: "Катэгорыя"
+      user:
+        name: "Імя"
+        email: "Email"
+        avatar: "Аватар"
+        role: "Роля"
+        password: "Пароль"
+        password_confirmation: "Паўтарыце пароль"
+        current_password: "Бягучы пароль"
+        remember_me: "Запомніць"
+    errors:
+      messages:
+        blank: "не можа быць пустым"
+        too_long: "занадта доўгі"
+        required: "абавязкова"

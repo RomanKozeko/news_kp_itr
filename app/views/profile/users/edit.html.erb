@@ -66,6 +66,12 @@
                 <%= f.file_field :avatar %>
               </div>
             </div>
+            <div class="form-group row">
+              <%= f.label :locale, class: "col-lg-3 col-form-label form-control-label" %>
+              <div class="col-lg-9">
+                <%= f.select :locale, options_for_select([['Русский', "ru"], ['Беларускі', "by"]], selected: @user.locale), {}, {class: "form-control"} %>
+              </div>
+            </div>
             <%= link_to t(".edit_password"), edit_user_registration_path %>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label"></label>
@@ -74,7 +80,7 @@
               </div>
             </div>
           <% end %>
-          <% if can? :update_profile, @user %>
+          <% if can? :update_role, @user %>
           <%= form_for [:profile, @user], :url => { :action => "update_role" },  :html => { :method => :patch} do |f| %>
             <div class="form-group row">
               <%= f.label :role, class: "col-lg-3 col-form-label form-control-label" %>
