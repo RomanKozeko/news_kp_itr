@@ -6,8 +6,9 @@ class Profile::UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find_by_id(params[:id])
     authorize! :edit, @user
-    if @user = User.find_by_id(params[:id])
+    if @user
     @posts = @user.posts.order(:updated_at).reverse_order.paginate(page: params[:page], per_page: 15)
     else
       redirect_to profile_users_path, danger: "#{t(".not_found")}"
@@ -16,8 +17,9 @@ class Profile::UsersController < ApplicationController
   end
 
   def update
+    @user = User.find_by_id(params[:id])
     authorize! :update, @user
-    if @user = User.find_by_id(params[:id])
+    if @user
       @user.update(user_params)
       redirect_to edit_profile_user_path(@user) , success: "Профиль успешно обновлен"
     else

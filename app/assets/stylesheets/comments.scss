@@ -33,3 +33,10 @@
 .comment {
   border-bottom: 1px dotted gray;
 }
+.comment-reply{
+  text-decoration: none;
+}
+.comment-reply:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

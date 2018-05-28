@@ -8,6 +8,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.includes(:tags, :category, :user).find(params[:id])
     @new_comment = Comment.build_from(@post, current_user.id, "") if user_signed_in?
+    respond_to do |format|
+      format.html
+      format.pdf {render template: "posts/show", pdf: "show"}
+    end
   end
 
   def new
