@@ -6,8 +6,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @posts = Post.includes(:tags, :category, :user).where(category_id: [@category.subtree_ids]).order(:created_at).reverse_order.paginate(page: params[:page], per_page: 10)
     authorize! :show, @category
+    @posts = Post.includes(:tags, :category, :user).where(category_id: [@category.subtree_ids]).order(:created_at).reverse_order.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -17,12 +17,12 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    authorize! :create, @category
     if @category.save
       redirect_to categories_path, success: "#{t(".success_create")}"
     else
       render :new
     end
-    authorize! :create, @category
   end
 
   def edit
@@ -32,24 +32,25 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
+    authorize! :update, @category
     if @category.update(category_params)
       redirect_to categories_path, success: "#{t(".success_update")}"
     else
       render :edit
     end
-    authorize! :update, @category
   end
 
   def destroy
     @category = Category.find(params[:id])
+    authorize! :destroy, @category
     @category.destroy
     redirect_to categories_path
-    authorize! :destroy, @category
   end
-end
 
-private
+  private
 
-def category_params
-  params.require(:category).permit(:name, :parent_id)
+  def category_params
+    params.require(:category).permit(:name, :parent_id)
+  end
+
 end

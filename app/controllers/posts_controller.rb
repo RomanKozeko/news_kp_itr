@@ -27,12 +27,12 @@ class PostsController < ApplicationController
   def create
     @user = User.find(post_params[:user_id])
     @post = @user.posts.build(post_params)
+    authorize! :create, @post
     if @post.save
       redirect_to @post, success:  "#{t(".success_create")}"
     else
       render :new
     end
-    authorize! :create, @post
   end
 
   def edit
@@ -43,22 +43,22 @@ class PostsController < ApplicationController
   end
 
   def update
-
-    if @post = Post.find_by_id(params[:id])
+    @post = Post.find_by_id(params[:id])
+    authorize! :update, @post
+    if @post
       @post.update(post_params)
       redirect_to @post , success:  "#{t(".success_update")}"
     else
       render :edit
     end
-    authorize! :update, @post
   end
 
   def destroy
     @post = Post.find(params[:id])
+    authorize! :destroy, @post
     if @post.destroy
       redirect_to posts_path, success:  "#{t(".success_destroy")}"
     end
-    authorize! :destroy, @post
   end
 
   private

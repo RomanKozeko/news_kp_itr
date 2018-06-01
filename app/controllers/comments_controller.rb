@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   def create
     commentable = commentable_type.constantize.find(commentable_id)
     @comment = Comment.build_from(commentable, current_user.id, body)
+    authorize! :create, @comment
 
     respond_to do |format|
       if @comment.save
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
         format.html  { redirect_to(post_path(@comment.commentable_id), danger:  "#{t(".not_create")}") }
       end
     end
-    authorize! :create, @comment
   end
 
   private
